@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nmap Basics</title>
+</head>
+<body>
+	<h3>Finding vulnerabilities in your target using nmap</h3>
+	<p>There are a huge amount of options we can use with Nmap. We will only look at a couple today. But in the future we are going to look at a lot lot more. 
+	We already know that nmap is a port scanner which is a great help when doing reconnaissance. Let's look at some of the switches</p>
+	<ul>
+		<li><p>-s This is simply tells Nmap to scan a target</p></li>
+
+		<li><p>-sU This is a UDP scan. While this is slower than a TCP scan usually, some services are 
+		only listening for UDP request, so sometimes it may be neccessary to perform this scan.</p></li>
+
+		<li><p>-sT This will tell nmap to scan using a TCP connection where a full TCP connection is set up. However, the down side is that these connections are logged so if we are setting up hundreds of connections to different ports, it's a bit obvious that we are scanning ports. And the admin won't let their guard down, assuming that there might be a an attack coming in the near future. They may even blacklist your IP address, so no more scans can be done. If you aren't running nmap through the proxychains in order to hide your IP and you attack the target, you leave a dirty trail behind that's traceable when you were doing reconnaissance.</p></li>
+
+		<li><p>-sS This is a TCP scan and is sometimes referred to as a half-open scan, since a full TCP connection is not open. Our machine will send a SYN packet, and the destination machine will respond with a SYN/ACK packet which would indicate that the port is being listened on, while a RST (reset) tells us that the destination is not listening on that particular port. It is referred to as a half-open scan since the three way handshake isn't complete.</p>
+		<p>We can also call this a stealth scan. Since the scan doesn't open a full TCP connection as the final ACK packet isn't sent back to the destination. Since there is no full TCP connection set up, the target network won't log it. This type of scan is less reliable. but is much more stealthy.</p></li>
+
+		<li><p>-O This switch crafts raw packets in order to attempt to determine the OS, since different OS's respons to raw packets in differnet ways. </p></li>
+
+		<li><p>-A This technique tells Nmap to probe for software versions on the target ports aswell as Operating Systems</p></li>
+	</ul>
+	<p><b>Note:</b> In order to craft the raw packets, we need to have root priviledges to do so. In fact a lot of the scans require root in order to execute.</p>
+	<p>Scans are very useful in reconnaissance since they help us when looking for an attack vector to exploit.</p>
+	<ul>
+		<li><p>Open Ports- A typical server will actively accept TCP connections, UDP datagrams or SCTP associations on open ports. Finding open ports is the main objective of port scanning. Each open port is an avenue for attacks. 
+		Attackers want to exploit those open ports, while network admins want to try and close them or protect them with firewalls without stopping legitimate users. Open ports are also useful since they also indicate what services are available on that particular server or network.</p></li>
+		<li><p>Closed Ports - We can still access a closed port, however, there is no application listening on it. This can be helpful for host discovery or ping scanning, and as part of OS detection. Sometimes it may be worth scanning closed ports later in case some open up.</p></li>
+	</ul>
+	<p>With the ability to see what software is running and what version, we can look for vulnerabilities in that version, and find out whether a server is exploitable or not.</p>
+
+	<p>Most networks have IDS's and IPS's. Intrusion Detection Systems look for telltale signs of malicious activity and alert the admin of any instances. Our scans can be easily detected by IDS's, but we can slow down our scans beyond the IDS's threshold so that our scans go undetected. Nmap has different speed settings.</p>
+	<ul>
+		<li>
+			<p>-T is used to set the speed of the scan, in conjuction with a number from &#60;0-5&#62;.</p><p>The slowest scan being -T0 and the fastes scan being -T5. While the scanning will take longer on a slower speed, the risk of getting detected is greatly reduced.</p>	
+		</li></ul>
+	
+</p>
+	<p><b>Note:</b> Nmap can be used as a DOS tool. You can flood the target with an insane amount of packets at a high speed using -T5, it is likely to overwhelm a target and the server will be unable to process website request effectively rendering it useless.</p>
+	<p><a href="index.html">Link back to the index.html</a></p>	
+
+
+
+
+
+
+
+</body>
+</html>

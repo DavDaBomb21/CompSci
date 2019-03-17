@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h3>Conducting Active Recon with hping3</h3>
+	<p>hping3 is extremely versatile and is oftern referred to as a packet crafting tool, since it can create pretty much any packet you can think of. Different packets will evoke different responses from the OS TCP/IP stack, which gives us clues to the underlying OS, ports and services.</p>
+	<p>We can use hping to test out multiple IDS and firewall evasion techniques, such as framenting packets, slow scans etc.</p>
+	<p><b>Note:</b> hping3 can create TCP, RAW IP, ICMP and UDP packets, and the default being TCP.</p>
+	<ul>
+		<li>-a enables us to spoof our IP address</li>
+		<li>--rand-dest creates packets with random port destinations</li>
+		<li>--rand-source creates packets with random source addresses</li>
+		<li>-t sets the Time to live of packets</li>
+		<li>-f fragments packets</li>
+	</ul>
+	<p><b>Note:</b> Time to Live (TTL) or hop limit is a mechanism that limits the lifesapn of data i a network. Each packets has a embeded timestamp/ attached. Data is discarded once the hop limit has been reached.</p>
+	<ul>
+		<li>-Q shows only the sequence number</li>
+		<li>-S scan using SYN packets</li>
+		<li>--tcp-timestamp	grabs the timestamp from the tcp packet</li>
+	</ul>
+	<p>A really important feature of hping3 is that it's default packet is TCP, which renders network devices such as routers of firewalls which block ICMP useless. The reason for blocking ICMP is to thrawt host discovery and reconnaissance, but we can still do so with hping3.</p>
+	<ul><li>hping3 -S 192.168.1.105 -p 80</li></ul>
+	<p>This is essentially the same thing as:</p>
+	<ul><li>nmap -sS 192.168.1.105 -p 80</li></ul>
+	<p>There are two types of packets that can come back depending on the state of a port.</p>
+	<ul>
+		<li>If the port is closed the port will respond with a RA flag.</li>
+		<li>If the port is open, the port will respond with an SA flag.</li>
+	</ul>
+	<p>hping3 has additional functionality when it comes to port scanning which we can take advantage of. If we want to scan starting from a certain port, we can simply do</p>
+	<ul><li>hping3 -S -p ++1</li></ul>
+	<p>The first part is hping3 -S , which just tells hping3 to do a scan using SYN packets. Then we reach the -p switch followed by the increment (++) switch followed by the port number we want to start scanning from. So in this case we are scanning port 1 and then incrimenting through each port above port 1.</p>
+</body>
+</html>

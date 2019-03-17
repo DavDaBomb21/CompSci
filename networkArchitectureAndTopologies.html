@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+	<h2>Network Architecture and Topologies</h2>
+    <h3>P2P vs Client-Server</h3>
+    <p>Networking has been developed in a way so that resources and data can be shared between users. And how this is achieved maps to the particular architecture of the network OS software. The two main network types are peer-to-peer and client-server. These two network architectures have pretty major differences.</p>
+    <h4>P2P networks</h4>
+    <p>Nodes connected to a P2P network dont have any central authority. All peers are equal when it comes to authority. It is the authority of the computer with the desired resources, to perform security checks. Computers in a peer to peer network act as both a client and server, where a computer may both request and provide resources. This works reasonably well when there aren't a huge number of nodes connected to a network, and if each user backs up data locally and if the network doesn't require much security. </p>
+    <p>One problem with peer to peer networks is security, different computers may hold different passwords for the same user. Since security is not governed by a central authority such as a server, users have to remember different usernames and passwords for different machines. Furthermore, its harder to look for files since they may be any of the machines in the P2P network. This is quite a tangle and a mess.
+</p>
+<h4>Client-Server networks</h4>
+	<p>Client server networks are the opposite of P2P networks because a single server uses a network OS to manage the entire network. A client machine request goes to the main server, and answers by handling securtiy and directing the client to the requested resource.
+This has some serious advantages such as that since every request is run through the central server on the network, there is no need for the user to remember numerous passwords, and the user doesn't need to know what host the requested resource - the server handles this. Resources are generally stored in one spot, such as a file server, instead of having files split over multiple workstations. </p>
+    <p>Security is much tighter as all usernames and passwords are stored on a specific server, which isn't used as a workstation. 
+Client server networks are much more scalable than peer to peer networks.
+Most of today's networks are a blend of both peer-to-peer and client-server architectures, with specific servers that permit simultaneous sharing of resources from devices running workstation OSs</p>
+    <p>Though take note that workstations can't handle as many inbound connections compared to a server, buyt is good enough to run the server service reasonably well. If this mixed environment is designed well, most networks benefit greatly by having the capacity to take advantage of both architectures.</p>
+    <h3>Topologies</h3>
+    <p>A physical network topology defines the characteristics of a network, such as where all hosts are located, and the precise arrangement of all the physical media such as cables. Consider this a map of the network.</p>
+
+
+	<p>A logical topology is how data moves through the network. Networks can have very different logical and physical topologies. One way to think of it is that physical topology gives you the layout of the land, and the logical topology shows you how data navigate through the land.</p>
+    <p>Here are the list of topologies you are likely to run into these days:</p>
+    <ul>
+    	<li>Bus</li>
+        <li>Star</li>
+        <li>Mesh</li>
+        <li>Ring</li>
+        <li>Point-Point</li>
+        <li>Point-Multipoint</li>
+        <li>Hybrid Bus</li>
+    </ul>
+</body>
+</html>

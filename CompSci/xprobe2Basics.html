@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>xprobe2 Basics</title>
+</head>
+<body>
+	<h3>Conducting OS fingerprinting with xprobe2</h3>
+	<p>We can use nmap or hping2 to do Operating System Fingerprinting, but they simply aren't as reliable or accurate as xping3, a tool specifically built for the purpose of OS fingerprinting.</p>
+
+	<p>xprobe2 is one of the best active tool for active OS fingerprinting, which means that xprobe2 probes the target system and determines the Operating System from the system's response. Xprobe2 has a total of 16 <b>different</b> modules it runs in order to help determine the OS.</p>
+
+	<p>Any fingerprinting that probes a network with special packets is going to be really noisy and is likely to be detected by the Network Intrusion Detection System and othe security system.</p>
+
+	<p>The syntax for running an xprobe fingerprint is:</p>
+	<ul>
+		<li>xprobe2 &#60;target domain or IP&#62;</li>
+	</ul>
+
+	<p>If you run nmap -O you should get similar results, thought they tend to be less accurate and reliable.</p>
+
+	<p>As we mentioned earlier, xprobe2 has 16 modules which it uses in order to determine the OS of the target, and determines the probability of each guess. We can look at these modules:</p>
+	<ul>
+		<li>xprobe2 -L</li>
+	</ul>
+
+	<p>Xprobe2 uses all the 16 modules by default, but we can remove modules we don't need when probing a system using the -D switch. For example, on many network, the icmp modules will hang and it may be neccessary to remove these modules in order to get xprobe2 to work. We can do this:</p>
+	<ul>
+		<li>xprobe2 -D google.com</li>
+	</ul>
+
+	<p>You still require some knowledge and skill to interpret the results returned by xprobe2. It is never guaranteed 100% that a system is running a certain OS. However, if we have like below, we can be pretty sure that openBSD is running, but we are less sure about what version of openBSD is running.</p>
+	<p>inset image here from https://img.wonderhowto.com/img/original/93/72/63513801362154/0/635138013621549372.jpg or equivalent</p>
+
+	<p><a href="index.html">Link back to the index.html</a></p>	
+
+</body>
+</html>
